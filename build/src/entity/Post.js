@@ -9,23 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const typedi_1 = require("typedi");
-const pg_1 = require("pg");
-let PostgresService = class PostgresService {
-    constructor() {
-        this.connectionString = 'postgresql://postgres:123456789@localhost:5432/lawyer';
-        this.client = new pg_1.Client({
-            connectionString: this.connectionString
-        });
-        this.connectDb();
-    }
-    connectDb() {
-        this.client.connect();
-    }
+const typeorm_1 = require("typeorm");
+let Post = class Post {
 };
-PostgresService = __decorate([
-    typedi_1.Service(),
-    __metadata("design:paramtypes", [])
-], PostgresService);
-exports.default = PostgresService;
-//# sourceMappingURL=PostgresService.js.map
+__decorate([
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Post.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Post.prototype, "innerContent", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Post.prototype, "visualizations", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Post.prototype, "title", void 0);
+Post = __decorate([
+    typeorm_1.Entity()
+], Post);
+exports.default = Post;
+//# sourceMappingURL=Post.js.map
