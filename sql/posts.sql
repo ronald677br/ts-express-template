@@ -4,7 +4,17 @@ create table posts(
 	title text,
 	innerContent text,
 	dateCreated timestamptz,
-	visualizations int default 0
+	visualizations int
 );
+
+drop table if exists users;
+create table users(
+	id serial primary key,
+	name text,
+	email text,
+	role text,
+	password text
+);
+
 
 insert into posts(title, innercontent ,datecreated ,visualizations) values('titulo', 'conteudo', now(), 0);

@@ -12,12 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
 const ExpressConfig_1 = require("./config/ExpressConfig");
 const PostgresService_1 = require("./services/PostgresService");
+const PORT = 3000;
 class Application {
     constructor() {
         this.express = new ExpressConfig_1.default();
         this.postgresService = typedi_1.default.get(PostgresService_1.default);
         this.postgresService.connectDb();
-        this.express.app.listen(3000, () => console.log('[express] -> app started on port 3000'));
+        this.express.app.listen(PORT, () => console.log('[express] -> app started on port ' + PORT));
         process.on('exit', async () => {
             await this.postgresService.disconnectDb();
         });
