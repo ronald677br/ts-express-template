@@ -10,26 +10,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let Post = class Post {
+let Posts = class Posts extends typeorm_1.BaseEntity {
+    static validatePost(post) {
+        if (!post.title || post.title.length <= 0) {
+            return false;
+        }
+        if (!post.innerContent || post.innerContent.length <= 0) {
+            return false;
+        }
+        return true;
+    }
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Post.prototype, "id", void 0);
+], Posts.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ name: 'innercontent' }),
     __metadata("design:type", String)
-], Post.prototype, "innerContent", void 0);
+], Posts.prototype, "innerContent", void 0);
+__decorate([
+    typeorm_1.Column({ name: 'datecreated' }),
+    __metadata("design:type", Date)
+], Posts.prototype, "dateCreated", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
-], Post.prototype, "visualizations", void 0);
+], Posts.prototype, "visualizations", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Post.prototype, "title", void 0);
-Post = __decorate([
-    typeorm_1.Entity()
-], Post);
-exports.default = Post;
+], Posts.prototype, "title", void 0);
+Posts = __decorate([
+    typeorm_1.Entity({ name: 'posts' })
+], Posts);
+exports.default = Posts;
 //# sourceMappingURL=Post.js.map

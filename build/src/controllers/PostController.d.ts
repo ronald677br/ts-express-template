@@ -1,7 +1,8 @@
-import Post from "../entity/Post";
+import Posts from "../entity/Post";
 import PostsService from "../services/PostsService";
 export default class PostController {
     postsService: PostsService;
     constructor();
-    get(): Promise<Post>;
+    get(id: number): Promise<{}>;
+    post(post: Posts): Promise<any>;
 }

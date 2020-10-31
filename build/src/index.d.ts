@@ -1,4 +1,3 @@
 import 'reflect-metadata';
-import Application from "./Application";
-declare const _default: Application;
-export default _default;
+declare var app: any;
+export default app;

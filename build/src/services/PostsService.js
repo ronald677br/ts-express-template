@@ -10,10 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
+const Post_1 = require("../entity/Post");
 const PostgresService_1 = require("./PostgresService");
 let PostsService = class PostsService extends PostgresService_1.default {
     constructor() {
         super();
+    }
+    async getPost(id) {
+        let post = await Post_1.default.findOne(id);
+        return post ? post : null;
     }
 };
 PostsService = __decorate([
